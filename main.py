@@ -28,6 +28,8 @@ def build_entry() -> str:
     text = SENTENCE.strip()
     if not text:
         raise SystemExit("entry sentence is empty")
+    if "\n" in text or "\r" in text:
+        raise SystemExit("entry sentence must be a single line")
     if len(text) > MAX_CHARS:
         raise SystemExit(
             f"entry sentence is {len(text)} characters, over the "
